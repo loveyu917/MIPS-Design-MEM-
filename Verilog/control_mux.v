@@ -1,20 +1,20 @@
-module control_mux(memtoReg, ALUresult);
+module control_mux(memtoReg, ALUresult, DMresult, data);
 
 input memtoReg;
 
 input [15:0] ALUresult;
 
-input [15:0] DM_result;
+input [15:0] DMresult;
 
 output reg [15:0] data;
 
 
 always @ *
 begin 
-	if(memtoReg) 
-		data <= ALUresult;
+	if(memtoReg==1'b1) 
+		data <= DMresult;
 	else
-		data <= DM_result;
+		data <= ALUresult;
 
 end
 endmodule
